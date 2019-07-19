@@ -11,7 +11,7 @@ import { MusicasProvider } from '../../providers/musicas/musicas';
 export class HomePage {
   
   musicas=[];
-  searchText:string='';
+  searchText:string=null;
   
 
   constructor(public navCtrl: NavController, public musicap : MusicasProvider) { 
@@ -21,7 +21,7 @@ export class HomePage {
 
   getAllProducts() {
     
-    this.musicap.getAll()
+    this.musicap.getAll(searchText)
       .then((result: any[]) => {
         this.musicas = result;
       });
