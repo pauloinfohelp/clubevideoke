@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Adicionar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="entryForm" (ngSubmit)="submitForm(entryForm.value)">
+    <p>
+      <input type="text" name="value" formControlName="value" [(ngModel)]="entry.value">
+    </p>
+    <p *ngIf="entryForm.controls.value.hasError('required') && entryForm.controls.value.touched">
+      <span>O campo de valor é obrigatório!</span>
+    </p>
+    <ion-item *ngIf="entryForm.controls.value.hasError('pattern') && entryForm.controls.value.touched">
+      <p>O campo valor deve conter apenas números.</p>
+    </ion-item>
+
+    <p>
+      <select name="category" formControlName="category" [(ngModel)]="entry.category">
+        <option value="1">Alimentação</option>
+        <option value="2">Lazer</option>
+      </select>
+    </p>
+    <p *ngIf="entryForm.controls.category.hasError('required') && entryForm.controls.category.touched">
+      <span>O campo de categoria é obrigatório!</span>
+    </p>
+
+    <p>
+      <button type="submit" [disabled]="!entryForm.valid">Adicionar</button>
+      <button (click)="goBack()">Cancelar</button>
+    </p>
+  </form>
+</ion-content>

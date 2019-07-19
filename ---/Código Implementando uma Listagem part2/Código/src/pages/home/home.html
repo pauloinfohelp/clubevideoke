@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Smart Money</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <h1>Saldo: $2.102,45</h1>
+
+  <button (click)="addEntry()">Adicionar</button>
+
+  <h3>Categorias</h3>
+  <ul>
+    <li>Alimentação: $200</li>
+    <li>Combustível: $12</li>
+    <li>Aluguel $120</li>
+    <li>Lazer: $250</li>
+    <li>Outros: $1200</li>
+  </ul>
+
+  <h3>Últimos Lançamentos</h3>
+  <ol>
+    <li *ngFor="let entry of entries">
+      {{entry.description}}: {{ entry.amount | currency }}
+    </li>
+  </ol>
+</ion-content>

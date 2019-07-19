@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Consulte sua musica</h3>
+
+  
+<ion-toolbar>
+  <ion-searchbar (ionInput)="filterProducts($event)" [(ngModel)]="searchText"></ion-searchbar>
+  <!--
+   
+  <ion-searchbar placeholder="Digite p/ filtrar:"
+                 [(ngModel)]="sql"
+                 (ionInput)="filterList($event)"
+                 clearInput> 
+                </ion-searchbar>
+                -->
+</ion-toolbar>
+<ion-card>
+    <ion-card-content *ngFor="let lis of musicas" >
+          <p><b>{{lis.inicio}}</b></p>
+          <p><b>{{lis.musica}}</b></p>
+          <p><b>{{lis.interprete}}</b></p>
+          <p><b>{{lis.favorito}}</b></p>
+          <p><b><u>{{lis.codigo}}</u></b></p>
+          <p><b>{{lis.todos}}</b></p>
+          
+    </ion-card-content>
+</ion-card>
+
+
+  <!--<button ion-button secondary menuToggle>Toggle Menu</button>
+-->
+  <button ion-button (click)="testDb()" >Criar Banco</button>
+  <button ion-button (click)="consoleC()" >Criar Tabela</button>
+  <button ion-button (click)="insertI()">Insert 1ndividual</button>
+  
+</ion-content>
