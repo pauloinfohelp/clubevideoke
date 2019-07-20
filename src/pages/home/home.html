@@ -12,7 +12,7 @@
 
   
 <ion-toolbar>
-  <ion-searchbar (ionInput)="filterProducts($event)" [(ngModel)]="searchText"></ion-searchbar>
+  <ion-searchbar (ionInput)="filterMusic($event)" [(ngModel)]="queryText"></ion-searchbar>
   <!--
    
   <ion-searchbar placeholder="Digite p/ filtrar:"
@@ -26,11 +26,14 @@
     <ion-card-content *ngFor="let lis of musicas" >
           <p><b>{{lis.inicio}}</b></p>
           <p><b>{{lis.musica}}</b></p>
-          <p><b>{{lis.interprete}}</b></p>
-          <p><b>{{lis.favorito}}</b></p>
-          <p><b><u>{{lis.codigo}}</u></b></p>
-          <p><b>{{lis.todos}}</b></p>
           
+          <p><b>{{lis.interprete}}</b></p>
+          <p><b><u>{{lis.codigo}}</u></b></p>
+         
+         <!--
+          <p><b>{{lis.favorito}}</b></p>
+          
+          -->
     </ion-card-content>
 </ion-card>
 

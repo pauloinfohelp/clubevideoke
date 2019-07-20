@@ -10,42 +10,66 @@ import { MusicasProvider } from '../../providers/musicas/musicas';
 })
 export class HomePage {
   
+  list: Array<{ inicio: string, musica: string, interprete: string, codigo: string }>;
+  allList: any;
+  queryText: string;
+
+
+
+
   musicas=[];
+  todasMusicas: any;
   searchText:string=null;
-  
+  search: "";
 
   constructor(public navCtrl: NavController, public musicap : MusicasProvider) { 
-  }
 
-
-
-  getAllProducts() {
+    this.queryText = '';
+    this.list = [
+      { inicio: 'Vai sentando', musica: 'Vai descendo', interprete: '*', codigo: '1234' },
+      { inicio: 'Vai sentando2', musica: 'Vai descendo2', interprete: '2*', codigo: '12342' }
+    ];
+    this.allList = this.list;
     
-    this.musicap.getAll(searchText)
-      .then((result: any[]) => {
-        this.musicas = result;
-      });
   }
 
+
+
+  
   ionViewDidEnter() {
-    this.getAllProducts();
-    //this.loadData();
+  //  this.getAllProducts();
+this.loadData();
   }
-  filterProducts(ev: any) {
-    this.getAllProducts();
+  
+  filterMusic(lis: any ){
+        let val = lis.target.value;
+    if (val && val.trim() != '') {
+      this.musicas = _.values(this.todasMusicas);
+      this.musicas = this.musicas.filter((lista) =>{
+        return (lista.todos.toLowerCase().indexOf(val.toLowerCase()) > - 1);
+      })
+      } else {
+      this.musicas = this.todasMusicas;
+    }
+    
+
   }
+
 
   private loadData() {
-  //  this.loadMusicas();
+  this.loadMusicas();
   }
-  /*
+  ///*
+  
   private loadMusicas() {
     this.musicap
       .getAll()
         .then((data: any) => {
           this.musicas = data;
+          this.todasMusicas=this.musicas;
         });
-  }*/
+  }
+  //*/
   consoleC()
     {
   console.log('teste');
